@@ -1,44 +1,44 @@
 import numpy as np
 import os
         
-linha = [2, 1, -1, -2, -2, -1, 1, 2]
-coluna = [1, 2, 2, 1, -1, -2, -2, -1]
+line = [2, 1, -1, -2, -2, -1, 1, 2]
+column = [1, 2, 2, 1, -1, -2, -2, -1]
 
 os.system('clear')
-tamanhoTab = 8
+sizeboard = 8
 lin = int(input('Digite a linha inicial do cavalo: '))
 col = int(input('Digite a coluna inicial do cavalo: '))
-Tabuleiro = np.zeros((tamanhoTab,tamanhoTab)) 
-limite = tamanhoTab * tamanhoTab
+board = np.zeros((sizeboard,sizeboard)) 
+limit = sizeboard * sizeboard
 
-def principal(l, c): 
+def main(l, c): 
 
-    Tabuleiro[l][c] = 1 
+    board[l][c] = 1 
 
-    correCavalinho(2, l, c) 
+    movehorse(2, l, c) 
 
    
-def correCavalinho(id, l, c): 
-    if (id > limite ):
+def movehorse(id, l, c): 
+    if (id > limit ):
         print("solução encontrada")
-        print(Tabuleiro)
+        print(board)
         print("\n")
     k = 0 
 
     
     for k in range(8):
-        x = l + linha[k]
-        y = c + coluna[k] 
+        x = l + line[k]
+        y = c + column[k] 
         
-        if(movimentoAceitavel(x, y)):
-            Tabuleiro[x][y] = id
-            correCavalinho(id + 1, x, y)
-            Tabuleiro[x][y] = 0 
+        if(movacceptable(x, y)):
+            board[x][y] = id
+            movehorse(id + 1, x, y)
+            board[x][y] = 0 
              
-def movimentoAceitavel(x, y): 
-    if((x >= 0 and x < tamanhoTab) and (y >= 0 and y < tamanhoTab) and (Tabuleiro[x][y] == 0)):
+def movacceptable(x, y): 
+    if((x >= 0 and x < sizeboard) and (y >= 0 and y < sizeboard) and (board[x][y] == 0)):
         return True
     else:
         return False
 
-principal(lin, col)
+main(lin, col)
