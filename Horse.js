@@ -48,7 +48,7 @@ function movehorse(id, l, c){
 }
 
 function movacceptable(x, y) {
-    if ((x >= 0 && x < sizeboard) && (y >= 0 && y < sizeboard) && (board[x][y] == 0)) {
+    if ((x >= 0 && x < sizeboard) && (y >= 0 && y < sizeboard) && (board[x][y] === 0)) {
         return true
     }
     else {
